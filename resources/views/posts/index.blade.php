@@ -4,6 +4,15 @@
         <meta charset="utf-8">
         <title>Blog</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,600">
+        <script>
+            function deletePost(id){
+                'use strict'
+
+                if(confirm('削除すると復元できません。\n本当に削除しますか？')){
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
+        </script>
     </head>
     <body>
         <h1>Blog Name</h1>
@@ -15,11 +24,17 @@
                         <a href="/posts/{{$post->id}}">{{$post->title}}</a>
                     </h2>
                     <p class="body">{{$post->body}}</p>
+                    <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" onclick="deletePost({{$post->id}})">delete</button>
+                    </form>
                 </div>
             @endforeach
         </div>
         <div class="paginate">
             {{$posts->links()}}
         </div>
+        `form_${id}`
     </body>
 </html>
