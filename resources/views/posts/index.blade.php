@@ -45,5 +45,6 @@
                 {{ $posts->links() }}
             </div>
         </main>
+        {{Auth::user()->name}}
     </body>
 </html>
