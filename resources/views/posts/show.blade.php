@@ -14,8 +14,13 @@
                 <h3>本文</h3>
                 <p>{{$post->body}}</p>
             </div>
+            @if($post->image_url)
+            <div>
+                <img src="{{$post->image_url}}" alt="画像が読み込めません。">
+            </div>
+            @endif
         </div>
-        <div class="eidt"><a href="/posts/{{$post->id}}/edit">edit</a></div>
+        <div class="edit"><a href="/posts/{{$post->id}}/edit">edit</a></div>
         <div class="footer">
             <a href="/">戻る</a>
         </div>
