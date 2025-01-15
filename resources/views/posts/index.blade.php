@@ -46,5 +46,12 @@
             </div>
         </main>
         {{Auth::user()->name}}
+        <div>
+            @foreach ($questions as $question)
+                <a href="https://teratail.com/questions/{{$question['id']}}">
+                {{$question['title']}}
+                </a>
+            @endforeach
+        </div>
     </body>
 </html>
